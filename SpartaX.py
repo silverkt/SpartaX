@@ -50,20 +50,9 @@ def getContent(html, label):
 		return ''	
 
 
-	# for x in m:
-	# 	jpg_link = 'http://'+website+'/'+x;
-	# 	x = x.split('/')
-	# 	path = x[1]
-	# 	print(jpg_link)
-	# 	response = requests.get(jpg_link, headers= headers, cookies= cookie)
-	# 	data = response.content
-	# 	f = open(path,'wb')
-	# 	f.write(data)
-	# 	f.close()
-	# 	
-	# 	
+	 
 website = '91.t9n.space'
-url = "http://"+website+"/viewthread.php?tid="
+url = "http://"+website+"/viewthread.php?tid=229471"
 prop = 'file'
 headers = {
 "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -75,20 +64,25 @@ headers = {
 "User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0"
 }
 cookie = getCookie(url, headers)
-html = getHtml(url, headers, cookie)
-x = getProp(html, prop)
-savePath = getContent(html, 'title')
-n = len(savePath)-45
-n = time.strftime("%Y%m%d", time.localtime())+n 
-savePath = savePath[0:n]+'/'
+
+def down91(url, headers, cookie, tid):
+	html = getHtml(url, headers, cookie)
+	x = getProp(html, prop)
+	savePath = getContent(html, 'title')
+	n = len(savePath)-45
+	savePath = 'resource/'+time.strftime("%Y%m%d", time.localtime())+'-'+str(tid)+'-'+savePath[0:n]+'/'
+	for i in x:
+		src =  'http://'+website+'/'+i
+		print(src)
+		getAssets(src,headers= headers, cookies= cookie, savePath= savePath)
 
 
- 
-
-for i in x:
-	src =  'http://'+website+'/'+i;
-	print(src)
-	getAssets(src,headers= headers, cookies= cookie, savePath= savePath)
+tid = 199314
+while tid<230299:
+	url = "http://"+website+"/viewthread.php?tid="+str(tid)
+	print('============'+url+'::>>>>>>>>>')
+	down91(url, headers, cookie, tid)
+	tid = tid + 1
 
 
 # http://blog.csdn.net/sinat_21302587/article/details/65634124 

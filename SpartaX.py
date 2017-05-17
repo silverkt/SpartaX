@@ -2,6 +2,7 @@
 import requests
 import re 
 import os
+import time
 
 def getCookie(url, headers=None):
 	return requests.get(url, headers= headers).cookies
@@ -62,7 +63,7 @@ def getContent(html, label):
 	# 	
 	# 	
 website = '91.t9n.space'
-url = "http://"+website+"/viewthread.php?tid=229471"
+url = "http://"+website+"/viewthread.php?tid="
 prop = 'file'
 headers = {
 "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -78,7 +79,11 @@ html = getHtml(url, headers, cookie)
 x = getProp(html, prop)
 savePath = getContent(html, 'title')
 n = len(savePath)-45
+n = time.strftime("%Y%m%d", time.localtime())+n 
 savePath = savePath[0:n]+'/'
+
+
+ 
 
 for i in x:
 	src =  'http://'+website+'/'+i;

@@ -83,9 +83,3 @@ while tid<230299:
 	print('============'+url+'::>>>>>>>>>')
 	down91(url, headers, cookie, tid)
 	tid = tid + 1
-
-
-# http://blog.csdn.net/sinat_21302587/article/details/65634124 
-# http://blog.csdn.net/shanzhizi/article/details/50903748
-# http://cn.python-requests.org/zh_CN/latest/user/quickstart.html#cookie
-# http://blog.csdn.net/ttdevs/article/details/53696261

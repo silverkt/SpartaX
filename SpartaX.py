@@ -4,9 +4,13 @@ import re
 import os
 import time
 
+## 
+# 获取网页Cookie
 def getCookie(url, headers=None):
 	return requests.get(url, headers= headers).cookies
 
+##
+# 获取网页文本源代码
 def getHtml(url, headers=None, cookies=None):
 	response = requests.get(url, headers= headers, cookies = cookies)
 	# cookie = response.cookies
@@ -16,8 +20,8 @@ def getHtml(url, headers=None, cookies=None):
 	# print(response.text)
 	return response.text
 
-
-
+##
+# 获取某类属性的属性值集合
 def getProp(html, prop):
 	m = re.findall(('%s=.+?[\"|\'|>|\s]')%(prop), html , flags= re.I) 
 	index = 0
@@ -28,8 +32,8 @@ def getProp(html, prop):
 		index = index + 1
 	return m
 
-	 
-
+##
+# 获取资源（图片，js，css等），并保存到指定路径
 def getAssets(src, name=None, headers=None, cookies=None, savePath=''):
 	try:
 		response = requests.get(src, headers= headers, cookies=cookies, timeout=10)
@@ -43,8 +47,8 @@ def getAssets(src, name=None, headers=None, cookies=None, savePath=''):
 	except Exception as err:
 		pass
 
-
-
+##
+# 获取指定标签的内容
 def getContent(html, label):
 	m = re.findall(r'<%s>.+?</%s>'%(label,label), html, flags= re.I)
 	if len(m)!=0:
@@ -52,11 +56,8 @@ def getContent(html, label):
 		return m
 	else:
 		return ''	
-
-
 	 
 website = '91.t9n.space'
-url = "http://"+website+"/viewthread.php?tid=229471"
 prop = 'file'
 headers = {
 "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",

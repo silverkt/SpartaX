@@ -31,14 +31,18 @@ def getProp(html, prop):
 	 
 
 def getAssets(src, name=None, headers=None, cookies=None, savePath=''):
-	response = requests.get(src, headers= headers, cookies=cookies)
-	src = src.split('/')
-	if not os.path.exists(savePath):
-		os.makedirs(savePath)
-	savePath = savePath + src[len(src)-1]
-	f = open(savePath, 'wb')
-	f.write(response.content)
-	f.close()
+	try:
+		response = requests.get(src, headers= headers, cookies=cookies, timeout=10)
+		src = src.split('/')
+		if not os.path.exists(savePath):
+			os.makedirs(savePath)
+		savePath = savePath + src[len(src)-1]
+		f = open(savePath, 'wb')
+		f.write(response.content)
+		f.close()
+	except Exception as err:
+		pass
+
 
 
 def getContent(html, label):
@@ -77,7 +81,7 @@ def down91(url, headers, cookie, tid):
 		getAssets(src,headers= headers, cookies= cookie, savePath= savePath)
 
 
-tid = 199314
+tid = 199679
 while tid<230299:
 	url = "http://"+website+"/viewthread.php?tid="+str(tid)
 	print('============'+url+'::>>>>>>>>>')

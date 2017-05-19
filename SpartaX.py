@@ -12,7 +12,10 @@ def getCookie(url, headers=None):
 ##
 # 获取网页文本源代码
 def getHtml(url, headers=None, cookies=None):
-	response = requests.get(url, headers= headers, cookies = cookies)
+	try:
+		response = requests.get(url, headers= headers, cookies = cookies, timeout=10)
+	except Exception as err:
+		response.text = ''
 	# cookie = response.cookies
 	# print(cookie)
 	# print(response.encoding)
@@ -68,8 +71,9 @@ headers = {
 "Referer":"http://www.google.com/",
 "User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0"
 }
+url = "http://"+website+"/viewthread.php?tid=199679"
 cookie = getCookie(url, headers)
-
+print(cookie)
 def down91(url, headers, cookie, tid):
 	html = getHtml(url, headers, cookie)
 	x = getProp(html, prop)
@@ -82,9 +86,17 @@ def down91(url, headers, cookie, tid):
 		getAssets(src,headers= headers, cookies= cookie, savePath= savePath)
 
 
-tid = 199679
+tid = 200784
+time_start = time.time()
 while tid<230299:
 	url = "http://"+website+"/viewthread.php?tid="+str(tid)
 	print('============'+url+'::>>>>>>>>>')
 	down91(url, headers, cookie, tid)
+	time_interv = time.time() - time_start
+	if time_interv>3600:
+		time_start = time.time()
+		time.sleep(60)
+		print('--------------sleep 60 seconds -----------------==========!!!!!')
+		cookie = getCookie(url, headers)
+		print(cookie)
 	tid = tid + 1

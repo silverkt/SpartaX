@@ -14,14 +14,15 @@ def getCookie(url, headers=None):
 def getHtml(url, headers=None, cookies=None):
 	try:
 		response = requests.get(url, headers= headers, cookies = cookies, timeout=10)
+		response.encoding = 'utf-8'
+		return response.text
 	except Exception as err:
-		response.text = ''
+		return '<html></html>'
 	# cookie = response.cookies
 	# print(cookie)
 	# print(response.encoding)
-	response.encoding = 'utf-8'
 	# print(response.text)
-	return response.text
+	
 
 ##
 # 获取某类属性的属性值集合
@@ -86,7 +87,7 @@ def down91(url, headers, cookie, tid):
 		getAssets(src,headers= headers, cookies= cookie, savePath= savePath)
 
 
-tid = 200784
+tid = 200928
 time_start = time.time()
 while tid<230299:
 	url = "http://"+website+"/viewthread.php?tid="+str(tid)

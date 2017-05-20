@@ -101,3 +101,6 @@ while tid<230299:
 		cookie = getCookie(url, headers)
 		print(cookie)
 	tid = tid + 1
+
+
+# working on GC

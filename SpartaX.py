@@ -7,7 +7,12 @@ import time
 ## 
 # 获取网页Cookie
 def getCookie(url, headers=None):
-	return requests.get(url, headers= headers).cookies
+	try:
+		return requests.get(url, headers= headers).cookies
+	except Exception as err:
+		print(err)
+		print('get Cookie failed')
+		exit(0)
 
 ##
 # 获取网页文本源代码

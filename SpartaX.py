@@ -8,7 +8,7 @@ import time
 # 获取网页Cookie
 def getCookie(url, headers=None):
 	try:
-		return requests.get(url, headers= headers).cookies
+		return requests.get(url, headers= headers, timeout=10).cookies
 	except Exception as err:
 		print(err)
 		print('get Cookie failed')
@@ -92,7 +92,7 @@ def down91(url, headers, cookie, tid):
 		getAssets(src,headers= headers, cookies= cookie, savePath= savePath)
 
 
-tid = 200928
+tid = 227979
 time_start = time.time()
 while tid<230299:
 	url = "http://"+website+"/viewthread.php?tid="+str(tid)

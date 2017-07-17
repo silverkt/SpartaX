@@ -66,7 +66,7 @@ def getContent(html, label):
 	else:
 		return ''	
 	 
-website = '91.t9n.space'
+website = '91.p9a.space'
 prop = 'file'
 headers = {
 "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -92,9 +92,9 @@ def down91(url, headers, cookie, tid):
 		getAssets(src,headers= headers, cookies= cookie, savePath= savePath)
 
 
-tid = 227979
+tid = 231037
 time_start = time.time()
-while tid<230299:
+while tid<236095:
 	url = "http://"+website+"/viewthread.php?tid="+str(tid)
 	print('============'+url+'::>>>>>>>>>')
 	down91(url, headers, cookie, tid)

@@ -1,0 +1,112 @@
+#coding:utf-8
+import requests
+import re 
+import os
+import time
+
+## 
+# 获取网页Cookie
+def getCookie(url, headers=None):
+	try:
+		return requests.get(url, headers= headers, timeout=10).cookies
+	except Exception as err:
+		print(err)
+		print('get Cookie failed')
+		exit(0)
+
+##
+# 获取网页文本源代码
+def getHtml(url, headers=None, cookies=None):
+	try:
+		response = requests.get(url, headers= headers, cookies = cookies, timeout=10)
+		response.encoding = 'utf-8'
+		return response.text
+	except Exception as err:
+		return '<html></html>'
+	# cookie = response.cookies
+	# print(cookie)
+	# print(response.encoding)
+	# print(response.text)
+	
+
+##
+# 获取某类属性的属性值集合
+def getProp(html, prop):
+	m = re.findall(('%s=.+?[\"|\'|>|\s]')%(prop), html , flags= re.I) 
+	index = 0
+	for x in m:
+
+		x = x.split('=')
+		m[index] = x[1].strip(' \"\'/>')
+		index = index + 1
+	return m
+
+##
+# 获取资源（图片，js，css等），并保存到指定路径
+def getAssets(src, name=None, headers=None, cookies=None, savePath=''):
+	try:
+		response = requests.get(src, headers= headers, cookies=cookies, timeout=10)
+		src = src.split('/')
+		if not os.path.exists(savePath):
+			os.makedirs(savePath)
+		savePath = savePath + src[len(src)-1]
+		f = open(savePath, 'wb')
+		f.write(response.content)
+		f.close()
+	except Exception as err:
+		pass
+
+##
+# 获取指定标签的内容
+def getContent(html, label):
+	m = re.findall(r'<%s>.+?</%s>'%(label,label), html, flags= re.I)
+	if len(m)!=0:
+		m = re.sub(r'<[^>]+>','', m[0])
+		return m
+	else:
+		return ''	
+	 
+website = '91.p9a.space'
+prop = 'file'
+headers = {
+"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+"Accept-Encoding":"utf-8",
+"Accept-Language":"zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3",
+"Connection":"keep-alive",
+"Host": website,
+"Referer":"http://www.google.com/",
+"User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0"
+}
+url = "http://"+website+"/viewthread.php?tid=199679"
+cookie = getCookie(url, headers)
+print(cookie)
+def down91(url, headers, cookie, tid):
+	html = getHtml(url, headers, cookie)
+	x = getProp(html, prop)
+	savePath = getContent(html, 'title')
+	n = len(savePath)-45
+	savePath = 'resource/'+time.strftime("%Y%m%d", time.localtime())+'-'+str(tid)+'-'+savePath[0:n]+'/'
+	for i in x:
+		src =  'http://'+website+'/'+i
+		print(src)
+		getAssets(src,headers= headers, cookies= cookie, savePath= savePath)
+
+
+tid = 231037
+time_start = time.time()
+while tid<236095:
+	url = "http://"+website+"/viewthread.php?tid="+str(tid)
+	print('============'+url+'::>>>>>>>>>')
+	down91(url, headers, cookie, tid)
+	time_interv = time.time() - time_start
+	if time_interv>3600:
+		time_start = time.time()
+		time.sleep(60)
+		print('--------------sleep 60 seconds -----------------==========!!!!!')
+		cookie = getCookie(url, headers)
+		print(cookie)
+	tid = tid + 1
+
+
+# working on GC
+# working on 管道流

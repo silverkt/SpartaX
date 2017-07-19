@@ -1,0 +1,171 @@
+#coding:utf-8
+import requests
+import re 
+import os
+import time
+
+## 
+# 获取网页Cookie
+def getCookie(url, headers=None):
+	try:
+		return requests.get(url, headers= headers, timeout=10).cookies
+	except Exception as err:
+		print(err)
+		print('get Cookie failed')
+		exit(0)
+
+##
+# 获取网页文本源代码
+def getHtml(url, headers=None, cookies=None):
+	try:
+		response = requests.get(url, headers= headers, cookies = cookies, timeout=10)
+		response.encoding = 'utf-8'
+		return response.text
+	except Exception as err:
+		return '<html></html>'
+	# cookie = response.cookies
+	# print(cookie)
+	# print(response.encoding)
+	# print(response.text)
+	
+ 							
+	 
+website = 'mail.91dizhi.at.gmail.com.7h4.space'
+prop = 'file'
+headers = {
+"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+"Accept-Encoding":"utf-8",
+"Accept-Language":"zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3",
+"Connection":"keep-alive",
+"Host": website,
+"Referer":"http://www.google.com/",
+"User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0"
+}
+url = "http://"+website+"/viewthread.php?tid=199679"
+ 
+url =  "http://email.91dizhi.at.gmail.com.7h4.space/view_video.php?viewkey=2706683cf0ce8bf90b5a"
+
+
+x = getHtml(url, headers)
+print(x)
+
+
+Host: email.91dizhi.at.gmail.com.7h4.space
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://email.91dizhi.at.gmail.com.7h4.space/index.php
+Cookie: __cfduid=d411eabf7bb0cbe677627157ee02be1ac1500291784; CLIPSHARE=q2o048m87im8vaqglslg39v6b0; show_msg=1; AJSTAT_ok_pages=3; AJSTAT_ok_times=1; language=cn_CN; watch_times=1
+DNT: 1
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0
+
+
+wget --header="Host: 192.240.120.108" --header="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" --header="Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" --header="Accept-Language: en-US,en;q=0.5" --header="Accept-Encoding: gzip, deflate" --header="DNT: 1" --header="Connection: keep-alive" --header="Upgrade-Insecure-Requests: 1" http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986
+
+
+
+wget --header="Accept:*/*" --header="Accept-Encoding:identity;q=1, *;q=0" --header="Accept-Language:en-US,en;q=0.8" --header="Connection:keep-alive" --header="Host:192.240.120.108" --header="If-Modified-Since:Sun, 16 Jul 2017 09:17:43 GMT" --header="Range:bytes=0-3759547" --header="Referer:http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986" --header="User-Agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36" http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986  -S
+
+
+
+1---
+GET //mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986 HTTP/1.1
+Host: 192.240.120.108
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.8
+Range: bytes=2621-2621
+If-Range: Sun, 16 Jul 2017 09:17:43 GMT
+
+
+2---
+GET //mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986 HTTP/1.1
+Host: 192.240.120.108
+Connection: keep-alive
+Accept-Encoding: identity;q=1, *;q=0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+Accept: */*
+Referer: http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986
+Accept-Language: en-US,en;q=0.8
+Range: bytes=0-10032220
+If-Modified-Since: Sun, 16 Jul 2017 09:17:43 GMT
+
+3--
+GET //mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986 HTTP/1.1
+Host: 192.240.120.108
+Connection: keep-alive
+Accept-Encoding: identity;q=1, *;q=0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+Accept: */*
+Referer: http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986
+Accept-Language: en-US,en;q=0.8
+Range: bytes=10027008-10032220
+If-Modified-Since: Sun, 16 Jul 2017 09:17:43 GMT
+
+4--
+GET //mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986 HTTP/1.1
+Host: 192.240.120.108
+Connection: keep-alive
+Accept-Encoding: identity;q=1, *;q=0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+Accept: */*
+Referer: http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986
+Accept-Language: en-US,en;q=0.8
+Range: bytes=22315008-26448220
+If-Modified-Since: Sun, 16 Jul 2017 09:17:43 GMT
+
+5--
+Accept-Encoding:identity;q=1, *;q=0
+Range:bytes=28475392-
+Referer:http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986
+User-Agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+
+6--
+Provisional headers are shown
+Accept-Encoding:identity;q=1, *;q=0
+Range:bytes=32669696-
+Referer:http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986
+User-Agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+
+7--
+Provisional headers are shown
+Accept-Encoding:identity;q=1, *;q=0
+Range:bytes=41811968-
+Referer:http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986
+User-Agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+
+8--
+Provisional headers are shown
+Accept-Encoding:identity;q=1, *;q=0
+Range:bytes=50495488-
+Referer:http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986
+User-Agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+
+13--
+GET //mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986 HTTP/1.1
+Host: 192.240.120.108
+Connection: keep-alive
+Accept-Encoding: identity;q=1, *;q=0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+Accept: */*
+Referer: http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986
+Accept-Language: en-US,en;q=0.8
+Range: bytes=70221824-
+
+
+GET //mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986 HTTP/1.1
+Host: 192.240.120.108
+Connection: keep-alive
+Accept-Encoding: identity;q=1, *;q=0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+Accept: */*
+Referer: http://192.240.120.108//mp43/225610.mp4?st=lzdQSvLz4lUSDdWF-2lL3g&e=1500298986
+Accept-Language: en-US,en;q=0.8
+Range: bytes=79331328-

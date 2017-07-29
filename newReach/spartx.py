@@ -92,9 +92,9 @@ def down91(url, headers, cookie, tid):
 		getAssets(src,headers= headers, cookies= cookie, savePath= savePath)
 
 
-tid = 231037
+tid = 237380
 time_start = time.time()
-while tid<236095:
+while tid<237382:
 	url = "http://"+website+"/viewthread.php?tid="+str(tid)
 	print('============'+url+'::>>>>>>>>>')
 	down91(url, headers, cookie, tid)

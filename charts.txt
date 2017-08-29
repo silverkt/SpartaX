@@ -1,0 +1,7 @@
+支付宝蚂蚁数据展示
+https://antv.alipay.com/index.html
+
+G2
+https://github.com/cipchk/g2-angular
+
+ngx-echarts

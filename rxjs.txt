@@ -1,0 +1,8 @@
+英文文档
+http://reactivex.io/rxjs/manual/
+
+对应中文翻译
+https://www.gitbook.com/book/buctwbzs/rxjs/details
+
+五大元素详细讲解
+http://reactivex.io/documentation/operators.html

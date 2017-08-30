@@ -11,3 +11,6 @@ robomongo是免费的
 
 redis 客户端
 redis desktop manager
+
+写给想做前端的你
+https://segmentfault.com/a/1190000005085629

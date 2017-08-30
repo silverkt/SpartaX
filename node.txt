@@ -1,0 +1,13 @@
+node 框架 
+koa+mongoose+ts
+https://www.oschina.net/translate/best-nodejs-frameworks-for-web-and-app-development
+http://www.oschina.net/news/54483/21-best-node-js-frameworks-2014
+http://ourjs.com/detail/15%E4%B8%AA%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84node-js%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6
+http://www.cnblogs.com/lhb25/p/10-best-node-js-mvc-frameworks.html
+
+MongoDB 数据管理
+robomongo是免费的
+
+
+redis 客户端
+redis desktop manager

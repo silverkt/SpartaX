@@ -6,3 +6,6 @@ https://www.gitbook.com/book/buctwbzs/rxjs/details
 
 五大元素详细讲解
 http://reactivex.io/documentation/operators.html
+
+rxjs github
+https://github.com/ReactiveX/rxjs

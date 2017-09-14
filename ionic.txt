@@ -1,0 +1,2 @@
+拍照闪退
+https://stackoverflow.com/questions/40730263/ionic-2-camera-makes-app-crash

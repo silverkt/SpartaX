@@ -8,7 +8,7 @@ import time
 # 获取网页Cookie
 def getCookie(url, headers=None):
 	try:
-		return requests.get(url, headers= headers, timeout=10).cookies
+		return requests.get(url, headers= None, timeout=10).cookies
 	except Exception as err:
 		print(err)
 		print('get Cookie failed')
@@ -18,7 +18,7 @@ def getCookie(url, headers=None):
 # 获取网页文本源代码
 def getHtml(url, headers=None, cookies=None):
 	try:
-		response = requests.get(url, headers= headers, cookies = cookies, timeout=10)
+		response = requests.get(url, headers= None, cookies = cookies, timeout=10)
 		response.encoding = 'utf-8'
 		return response.text
 	except Exception as err:
@@ -74,7 +74,7 @@ headers = {
 "Accept-Language":"zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3",
 "Connection":"keep-alive",
 "Host": website,
-"Referer":"http://www.google.com/",
+"Referer":"http://91.p9b.space",
 "User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0"
 }
 url = "http://"+website+"/viewthread.php?tid=199679"
@@ -89,10 +89,10 @@ def down91(url, headers, cookie, tid):
 	for i in x:
 		src =  'http://'+website+'/'+i
 		print(src)
-		getAssets(src,headers= headers, cookies= cookie, savePath= savePath)
+		getAssets(src,headers= None, cookies= cookie, savePath= savePath)
 
 
-tid = 231037
+tid = 231118
 time_start = time.time()
 while tid<236095:
 	url = "http://"+website+"/viewthread.php?tid="+str(tid)
@@ -109,6 +109,6 @@ while tid<236095:
 
 ##--------------------
 
-# 240925 - 244215
+# 240925 - 244770
 # working on GC
 # working on 管道流

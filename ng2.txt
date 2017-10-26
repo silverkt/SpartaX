@@ -17,6 +17,11 @@ ng2 wiki
 https://github.com/angular/angular-cli/wiki
 https://github.com/damondouglas/angular-cli-wiki
 
+
+摇树优化，极限
+ng build --prod --build-optimizer
+https://segmentfault.com/a/1190000010981919#articleHeader5
+
 为了优化，你可以在 ng build --prod --stats-json
 然后找一个叫 webpack.github.com/analyse的网站
 

@@ -1,8 +1,0 @@
-http://www.arduino.cn/thread-5744-1-1.html
-http://blog.csdn.net/g_crisis/article/details/50865360
-https://www.arduino.cc/en/Guide/Linux
-
-
-http://playground.arduino.cc/Linux/Debian
-http://www.arduino.cn/thread-5744-1-1.html
-http://www.51hei.com/arduino/3468.html
